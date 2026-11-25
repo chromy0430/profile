@@ -89,6 +89,30 @@ body {
   margin-bottom: 2.25rem;
 }
 
+/* 상단 타자 효과 인사말 */
+.typing-greeting {
+  min-height: 1.6em;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+.typing-greeting::after {
+  content: "|";
+  margin-left: 2px;
+  animation: blinkCursor 0.8s steps(1) infinite;
+}
+
+@keyframes blinkCursor {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
 .profile-avatar {
   width: 96px;
   height: 96px;
@@ -142,6 +166,7 @@ body {
 .card-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  align-items: start;
   gap: 1rem;
 }
 
@@ -151,13 +176,23 @@ body {
   border-radius: 16px;
   padding: 1.35rem;
   box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  user-select: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease,
-    background-color 0.25s ease;
+    background-color 0.25s ease, border-color 0.2s ease;
 }
 
 .card:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
+  border-color: var(--accent-color);
+}
+
+.card-top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
 }
 
 .card-icon {
@@ -166,17 +201,43 @@ body {
 }
 
 .card-title {
-  margin: 0 0 0.45rem;
+  margin: 0;
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--accent-color);
 }
 
+.card-toggle-hint {
+  position: absolute;
+  top: 0.25rem;
+  right: 0;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  transition: transform 0.25s ease;
+}
+
+/* 카드가 펼쳐졌을 때 화살표 회전 */
+.card.is-open .card-toggle-hint {
+  transform: rotate(180deg);
+  color: var(--accent-color);
+}
+
+/* 평소에는 설명을 접어두고, 클릭(.is-open) 시 부드럽게 펼침 */
 .card-desc {
   margin: 0;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
   font-size: 0.94rem;
   color: var(--text-secondary);
   word-break: keep-all;
+  transition: max-height 0.3s ease, opacity 0.25s ease, margin-top 0.3s ease;
+}
+
+.card.is-open .card-desc {
+  max-height: 200px;
+  opacity: 1;
+  margin-top: 0.65rem;
 }
 
 /* 올해 목표 체크리스트 */
