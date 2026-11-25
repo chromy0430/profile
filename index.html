@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>최호진 | 자기소개</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <!-- 라이트/다크 모드 하늘 배경 레이어 (태양·구름 / 달·별빛·은하수) -->
   <div class="sky-backdrop" aria-hidden="true">
@@ -20,14 +22,8 @@
   </div>
 
   <!-- 오른쪽 상단 다크모드 토글 스위치 -->
-  <button
-    type="button"
-    id="themeToggleBtn"
-    class="theme-toggle-btn"
-    role="switch"
-    aria-checked="false"
-    aria-label="다크모드로 전환"
-  >
+  <button type="button" id="themeToggleBtn" class="theme-toggle-btn" role="switch" aria-checked="false"
+    aria-label="다크모드로 전환">
     <span class="toggle-thumb" aria-hidden="true">
       <span class="toggle-cloud"></span>
     </span>
@@ -83,6 +79,38 @@
       </div>
     </section>
 
+    <!-- 내가 좋아하는 것 Top 5 섹션 -->
+    <section class="section" aria-labelledby="favoritesTitle">
+      <h2 id="favoritesTitle" class="section-title">내가 좋아하는 것 Top 5</h2>
+      <ol class="favorites-list">
+        <li class="favorite-item">
+          <span class="favorite-rank">1</span>
+          <span class="favorite-icon" aria-hidden="true">💭</span>
+          <span class="favorite-text">사색하기</span>
+        </li>
+        <li class="favorite-item">
+          <span class="favorite-rank">2</span>
+          <span class="favorite-icon" aria-hidden="true">🔎</span>
+          <span class="favorite-text">정보찾기</span>
+        </li>
+        <li class="favorite-item">
+          <span class="favorite-rank">3</span>
+          <span class="favorite-icon" aria-hidden="true">📚</span>
+          <span class="favorite-text">새로운것 학습하기</span>
+        </li>
+        <li class="favorite-item">
+          <span class="favorite-rank">4</span>
+          <span class="favorite-icon" aria-hidden="true">🧩</span>
+          <span class="favorite-text">분석하기</span>
+        </li>
+        <li class="favorite-item">
+          <span class="favorite-rank">5</span>
+          <span class="favorite-icon" aria-hidden="true">✨</span>
+          <span class="favorite-text">낭만찾기</span>
+        </li>
+      </ol>
+    </section>
+
     <!-- 올해 목표 섹션 -->
     <section class="section" aria-labelledby="goalsTitle">
       <div class="section-header">
@@ -132,12 +160,7 @@
           <span aria-hidden="true">✉️</span>
           <span>haneul.dev@example.com</span>
         </a>
-        <a
-          href="https://github.com/your-github-id"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="footer-link"
-        >
+        <a href="https://github.com/your-github-id" target="_blank" rel="noopener noreferrer" class="footer-link">
           <span aria-hidden="true">🐙</span>
           <span>GitHub</span>
         </a>
@@ -147,4 +170,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>
