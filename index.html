@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>김하늘 | 컴퓨터공학과 신입생 자기소개</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 오른쪽 상단 다크모드 전환 버튼 -->
+  <button
+    type="button"
+    id="themeToggleBtn"
+    class="theme-toggle-btn"
+    aria-label="다크모드 전환"
+  >
+    <span id="themeIcon" aria-hidden="true">🌙</span>
+    <span id="themeLabel">다크 모드</span>
+  </button>
+
+  <main class="container">
+    <!-- 상단 프로필 섹션 -->
+    <header class="profile-header">
+      <div class="profile-avatar" aria-label="프로필 이모지">🧑‍💻</div>
+      <h1 class="profile-name">김하늘</h1>
+      <p class="profile-tagline">
+        컴퓨터공학과 26학번 신입생 · 코드로 아이디어를 현실로 만드는 중입니다.
+      </p>
+    </header>
+
+    <!-- 관심 분야 섹션 -->
+    <section class="section" aria-labelledby="interestsTitle">
+      <h2 id="interestsTitle" class="section-title">관심 분야</h2>
+      <div class="card-grid">
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">🌐</div>
+          <h3 class="card-title">웹 개발</h3>
+          <p class="card-desc">
+            사용자가 직접 만지고 소통하는 화면을 만들고, 누구나 쓰기 편한 웹 서비스를 구현하고 싶습니다.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">🤖</div>
+          <h3 class="card-title">인공지능</h3>
+          <p class="card-desc">
+            데이터에서 패턴을 찾고, 일상 속 불편함을 똑똑하게 해결해 주는 AI 기술의 원리에 관심이 많습니다.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">🎮</div>
+          <h3 class="card-title">게임</h3>
+          <p class="card-desc">
+            플레이어에게 즐거운 경험과 몰입감을 주는 게임 로직과 인터랙션 구조를 직접 만들어 보고 싶습니다.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 올해 목표 섹션 -->
+    <section class="section" aria-labelledby="goalsTitle">
+      <div class="section-header">
+        <h2 id="goalsTitle" class="section-title">올해 목표</h2>
+        <span id="goalProgress" class="goal-progress">0 / 5 달성</span>
+      </div>
+
+      <ul class="goal-list" id="goalList">
+        <li class="goal-item">
+          <label class="goal-label">
+            <input type="checkbox" class="goal-checkbox" data-goal-id="goal-1">
+            <span class="goal-text">C언어와 Python 기초 문법 완벽히 익히기</span>
+          </label>
+        </li>
+        <li class="goal-item">
+          <label class="goal-label">
+            <input type="checkbox" class="goal-checkbox" data-goal-id="goal-2">
+            <span class="goal-text">Git &amp; GitHub 사용법 익혀서 첫 프로젝트 올리기</span>
+          </label>
+        </li>
+        <li class="goal-item">
+          <label class="goal-label">
+            <input type="checkbox" class="goal-checkbox" data-goal-id="goal-3">
+            <span class="goal-text">나만의 포트폴리오 웹사이트 직접 배포해 보기</span>
+          </label>
+        </li>
+        <li class="goal-item">
+          <label class="goal-label">
+            <input type="checkbox" class="goal-checkbox" data-goal-id="goal-4">
+            <span class="goal-text">학과 알고리즘 스터디에 꾸준히 참여하기</span>
+          </label>
+        </li>
+        <li class="goal-item">
+          <label class="goal-label">
+            <input type="checkbox" class="goal-checkbox" data-goal-id="goal-5">
+            <span class="goal-text">해커톤 또는 교내 개발 대회에 1번 이상 도전하기</span>
+          </label>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 하단 연락처 및 링크 섹션 -->
+    <footer class="profile-footer">
+      <p class="footer-note">함께 공부하거나 프로젝트를 이야기하고 싶다면 편하게 연락해 주세요!</p>
+      <div class="footer-links">
+        <a href="mailto:haneul.dev@example.com" class="footer-link">
+          <span aria-hidden="true">✉️</span>
+          <span>haneul.dev@example.com</span>
+        </a>
+        <a
+          href="https://github.com/your-github-id"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="footer-link"
+        >
+          <span aria-hidden="true">🐙</span>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
