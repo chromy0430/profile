@@ -5,54 +5,73 @@ const GOALS_STORAGE_KEY = "profile-goals";
 const GREETING_TEXT = "안녕하세요! 저의 자기소개 페이지에 오신 것을 환영합니다.";
 
 const themeToggleBtn = document.getElementById("themeToggleBtn");
-const themeIcon = document.getElementById("themeIcon");
-const themeLabel = document.getElementById("themeLabel");
 const typingGreeting = document.getElementById("typingGreeting");
 const interestCards = document.querySelectorAll(".card");
 const goalCheckboxes = document.querySelectorAll(".goal-checkbox");
 const goalProgress = document.getElementById("goalProgress");
 
 /**
- * 현재 테마를 화면에 적용하고 버튼 문구를 업데이트합니다.
+ * 현재 테마를 화면에 적용하고 토글 스위치 상태를 업데이트합니다.
  * @param {"light" | "dark"} theme
  */
 function applyTheme(theme) {
   if (theme === "dark") {
     document.documentElement.setAttribute("data-theme", "dark");
-    themeIcon.textContent = "☀️";
-    themeLabel.textContent = "라이트 모드";
+    themeToggleBtn.setAttribute("aria-checked", "true");
+    themeToggleBtn.setAttribute("aria-label", "라이트 모드로 전환");
   } else {
     document.documentElement.removeAttribute("data-theme");
-    themeIcon.textContent = "🌙";
-    themeLabel.textContent = "다크 모드";
+    themeToggleBtn.setAttribute("aria-checked", "false");
+    themeToggleBtn.setAttribute("aria-label", "다크 모드로 전환");
   }
 }
 
 /**
- * 저장된 테마 설정을 불러와 초기 화면에 반영합니다.
+ * 처음 방문한 사용자는 무조건 라이트 모드로 시작하고,
+ * 이전에 사용자가 직접 변경해 저장한 테마가 있을 때만 해당 테마를 복원합니다.
  */
 function initTheme() {
   try {
     const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
-    const initialTheme = savedTheme === "dark" ? "dark" : "light";
-    applyTheme(initialTheme);
+    if (savedTheme === "dark") {
+      applyTheme("dark");
+    } else {
+      applyTheme("light");
+    }
   } catch {
     applyTheme("light");
   }
 }
 
 /**
- * 다크모드 전환 버튼을 클릭했을 때 테마를 반전시키고 저장합니다.
+ * 다크모드 전환 버튼을 클릭했을 때 방향에 맞는 화면 전환 효과와 함께 테마를 바꿉니다.
  */
 function toggleTheme() {
   const isDark = document.documentElement.getAttribute("data-theme") === "dark";
   const nextTheme = isDark ? "light" : "dark";
-  applyTheme(nextTheme);
-  try {
-    localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
-  } catch {
-    // 저장소 접근이 제한된 환경에서는 화면 전환만 유지
+  const transitionClass =
+    nextTheme === "dark" ? "transition-to-dark" : "transition-to-light";
+
+  const updateTheme = () => {
+    applyTheme(nextTheme);
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+    } catch {
+      // 저장소 접근이 제한된 환경에서는 화면 전환만 유지
+    }
+  };
+
+  // 브라우저가 View Transitions API를 지원하지 않으면 즉시 전환
+  if (!document.startViewTransition) {
+    updateTheme();
+    return;
   }
+
+  document.documentElement.classList.add(transitionClass);
+  const transition = document.startViewTransition(updateTheme);
+  transition.finished.finally(() => {
+    document.documentElement.classList.remove(transitionClass);
+  });
 }
 
 /**
